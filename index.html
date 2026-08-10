@@ -12,13 +12,18 @@
     /* ── SWAP FONT HERE if the live site uses something else ── */
     --font: 'Open Sans', Helvetica, Arial, sans-serif;
 
-    --navy: #0A2540;
-    --navy-2: #0F3A66;
-    --ink: #0F1B2D;
-    --slate: #52657D;
-    --line: #E4EAF2;
-    --tint: #F5F8FC;
-    --accent: #1E7BE0;
+    /* ── brand palette (sampled from the live site) ── */
+    --brand: #5587F9;      /* site link / heading blue */
+    --brand-dark: #2E56C4; /* pressed + numerals */
+    --brand-tint: #A9C2FF; /* on-dark text accent */
+
+    --navy: #16265E;       /* booking gradient start */
+    --navy-2: #2C4CA6;     /* booking gradient end */
+    --ink: #131F38;
+    --slate: #5B6B85;
+    --line: #E2E9F7;
+    --tint: #F4F7FE;
+    --accent: var(--brand);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
@@ -52,7 +57,7 @@
     background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden;
   }
   .stat{ background:#fff; padding:26px 22px; }
-  .stat .num{ font-size:34px; font-weight:800; color:var(--navy); line-height:1; letter-spacing:-0.02em; }
+  .stat .num{ font-size:34px; font-weight:800; color:var(--brand-dark); line-height:1; letter-spacing:-0.02em; }
   .stat .lbl{
     margin-top:8px; font-size:11.5px; font-weight:700; letter-spacing:.1em;
     text-transform:uppercase; color:var(--slate);
@@ -68,7 +73,7 @@
   .svc p{ font-size:14.5px; line-height:1.65; color:var(--slate); }
   .svc-mark{
     width:36px; height:36px; border-radius:10px; margin-bottom:16px;
-    background:rgba(30,123,224,.10); color:var(--accent);
+    background:rgba(85,135,249,.12); color:var(--brand-dark);
     display:flex; align-items:center; justify-content:center;
     font-weight:800; font-size:13px;
   }
@@ -77,7 +82,7 @@
   .solutions{ padding:72px 0 8px; }
   .sol-grid{ margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
   .sol{
-    border:1px solid var(--line); border-left:3px solid var(--navy);
+    border:1px solid var(--line); border-left:3px solid var(--brand);
     border-radius:14px; padding:22px 20px; background:#fff;
   }
   .sol h3{ font-size:15.5px; font-weight:700; margin-bottom:6px; }
@@ -99,23 +104,23 @@
     align-items:start;
     color:#fff;
   }
-  .booking .eyebrow{ color:#9FC1FF; }
+  .booking .eyebrow{ color:var(--brand-tint); }
   .booking h2{
     font-weight:700; letter-spacing:-0.01em; line-height:1.12;
     font-size:clamp(26px,3.4vw,38px); color:#fff; margin:14px 0;
   }
-  .booking p{ color:#C3D4EE; font-size:16.5px; line-height:1.6; }
+  .booking p{ color:#CBD9F8; font-size:16.5px; line-height:1.6; }
   .booking-checklist{ margin-top:24px; display:flex; flex-direction:column; gap:10px; }
   .booking-checklist li{
-    font-size:14px; font-weight:600; color:#DCE7FF;
+    font-size:14px; font-weight:600; color:#E2EAFC;
     padding-left:22px; position:relative;
   }
   .booking-checklist li::before{
-    content:"✓"; position:absolute; left:0; color:#7CD992; font-weight:800;
+    content:"✓"; position:absolute; left:0; color:var(--brand-tint); font-weight:800;
   }
   .booking-frame{
     background:#fff; border-radius:20px; padding:6px;
-    box-shadow:0 24px 50px rgba(3,15,32,.35);
+    box-shadow:0 24px 50px rgba(12,22,58,.32);
   }
 
   /* ── responsive ── */
