@@ -4,30 +4,93 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book a Free Consultation | MRTC App Lab</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
+    /* ── SWAP FONT HERE if the live site uses something else ── */
+    --font: 'Open Sans', Helvetica, Arial, sans-serif;
+
     --navy: #0A2540;
+    --navy-2: #0F3A66;
     --ink: #0F1B2D;
+    --slate: #52657D;
+    --line: #E4EAF2;
+    --tint: #F5F8FC;
+    --accent: #1E7BE0;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
-    font-family:'Inter', sans-serif;
+    font-family:var(--font);
     color:var(--ink);
     background:#fff;
     -webkit-font-smoothing:antialiased;
   }
   ul{list-style:none;}
-
-  .booking-section{ padding:64px 0; }
   .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
 
+  /* shared type */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent);
+  }
+  .eyebrow::before{ content:""; width:16px; height:2px; background:currentColor; display:inline-block; }
+  .sec-title{
+    font-weight:700; letter-spacing:-0.01em; line-height:1.2;
+    font-size:clamp(24px,3vw,34px); margin:14px 0 12px;
+  }
+  .sec-lead{ color:var(--slate); font-size:16.5px; line-height:1.7; max-width:720px; }
+
+  /* ── 1. ABOUT ── */
+  .about{ padding:72px 0 64px; }
+  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .about-grid p + p{ margin-top:16px; }
+  .stats{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden;
+  }
+  .stat{ background:#fff; padding:26px 22px; }
+  .stat .num{ font-size:34px; font-weight:800; color:var(--navy); line-height:1; letter-spacing:-0.02em; }
+  .stat .lbl{
+    margin-top:8px; font-size:11.5px; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--slate);
+  }
+
+  /* ── 2. SERVICES ── */
+  .services{ padding:72px 0; background:var(--tint); }
+  .svc-grid{ margin-top:36px; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .svc{
+    background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 22px;
+  }
+  .svc h3{ font-size:16.5px; font-weight:700; margin-bottom:8px; }
+  .svc p{ font-size:14.5px; line-height:1.65; color:var(--slate); }
+  .svc-mark{
+    width:36px; height:36px; border-radius:10px; margin-bottom:16px;
+    background:rgba(30,123,224,.10); color:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px;
+  }
+
+  /* ── 3. SOLUTIONS ── */
+  .solutions{ padding:72px 0 8px; }
+  .sol-grid{ margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .sol{
+    border:1px solid var(--line); border-left:3px solid var(--navy);
+    border-radius:14px; padding:22px 20px; background:#fff;
+  }
+  .sol h3{ font-size:15.5px; font-weight:700; margin-bottom:6px; }
+  .sol p{ font-size:14px; line-height:1.6; color:var(--slate); }
+  .sol-note{
+    margin-top:28px; font-size:14.5px; color:var(--slate); line-height:1.7;
+    padding:18px 20px; background:var(--tint); border-radius:14px;
+  }
+
+  /* ── 4. BOOKING ── */
+  .booking-section{ padding:56px 0 72px; }
   .booking{
-    background:linear-gradient(135deg, var(--navy) 0%, #0F3A66 100%);
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
     border-radius:28px;
     padding:52px;
     display:grid;
@@ -36,23 +99,12 @@
     align-items:start;
     color:#fff;
   }
-  .booking .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:12.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
-    color:#9FC1FF;
-  }
-  .booking .eyebrow::before{
-    content:""; width:16px; height:2px; background:#9FC1FF; display:inline-block;
-  }
+  .booking .eyebrow{ color:#9FC1FF; }
   .booking h2{
-    font-family:'Sora', sans-serif; font-weight:700;
-    letter-spacing:-0.01em; line-height:1.12;
-    font-size:clamp(26px,3.4vw,38px);
-    color:#fff;
-    margin:14px 0;
+    font-weight:700; letter-spacing:-0.01em; line-height:1.12;
+    font-size:clamp(26px,3.4vw,38px); color:#fff; margin:14px 0;
   }
   .booking p{ color:#C3D4EE; font-size:16.5px; line-height:1.6; }
-
   .booking-checklist{ margin-top:24px; display:flex; flex-direction:column; gap:10px; }
   .booking-checklist li{
     font-size:14px; font-weight:600; color:#DCE7FF;
@@ -61,26 +113,123 @@
   .booking-checklist li::before{
     content:"✓"; position:absolute; left:0; color:#7CD992; font-weight:800;
   }
-
   .booking-frame{
-    background:#fff;
-    border-radius:20px;
-    padding:6px;
+    background:#fff; border-radius:20px; padding:6px;
     box-shadow:0 24px 50px rgba(3,15,32,.35);
   }
 
+  /* ── responsive ── */
+  @media (max-width: 1024px){
+    .svc-grid{ grid-template-columns:repeat(2,1fr); }
+    .sol-grid{ grid-template-columns:repeat(2,1fr); }
+  }
   @media (max-width: 940px){
     .booking{ grid-template-columns:1fr; padding:32px; gap:32px; }
+    .about-grid{ grid-template-columns:1fr; gap:32px; }
   }
   @media (max-width: 600px){
-    .booking-section{ padding:40px 0; }
     .wrap{ padding:0 16px; }
+    .about, .services{ padding:48px 0; }
+    .solutions{ padding:48px 0 8px; }
+    .booking-section{ padding:32px 0 48px; }
     .booking{ padding:24px; border-radius:20px; }
+    .svc-grid, .sol-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
 <body>
 
+<!-- ── 1. WHO WE ARE ── -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h1 class="sec-title">A mobile solutions provider helping Philippine companies go paperless.</h1>
+        <p class="sec-lead">MRTC App Lab Digital Philippines, Inc. is an established MSC-status software development, consulting, and ICT solutions company. Our mission is to help Philippine companies transform daily office operations from paper to paperless through a mobile platform.</p>
+        <p class="sec-lead">With a strong industry presence, we've deployed solutions for customers across manufacturing, distribution, food and beverage, and services. We deliver holistic software development — from custom web applications and mobile apps (iOS / Android) to system integration and UI/UX design.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">150</div><div class="lbl">Happy clients</div></div>
+        <div class="stat"><div class="num">35</div><div class="lbl">Finished projects</div></div>
+        <div class="stat"><div class="num">30</div><div class="lbl">Skilled experts</div></div>
+        <div class="stat"><div class="num">8</div><div class="lbl">Years in business</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. SERVICES ── -->
+<section class="services" id="services">
+  <div class="wrap">
+    <span class="eyebrow">What we do</span>
+    <h2 class="sec-title">The essential services behind your business growth.</h2>
+    <p class="sec-lead">We think differently and build digital solutions with personality. Whatever your size or sector, we help you stay at the technology forefront using modern platforms.</p>
+
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-mark">WD</div>
+        <h3>Web Development</h3>
+        <p>Custom web applications built around how your team actually works — not off-the-shelf templates.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-mark">MA</div>
+        <h3>Mobile App Development</h3>
+        <p>Native and cross-platform apps for iOS and Android that move your operations off paper.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-mark">SI</div>
+        <h3>System Integration</h3>
+        <p>Connect ERP, HR, and warehouse systems so your data stops living in separate silos.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-mark">UX</div>
+        <h3>UI/UX Design</h3>
+        <p>Interfaces your staff can use on day one, designed to cut training time and input errors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. SOLUTIONS ── -->
+<section class="solutions" id="solutions">
+  <div class="wrap">
+    <span class="eyebrow">Our solutions</span>
+    <h2 class="sec-title">Ready-to-deploy platforms, tailored to your workflow.</h2>
+    <p class="sec-lead">Each solution can run on its own or plug into your existing SAP Business One environment. We'll recommend the right fit during your consultation.</p>
+
+    <div class="sol-grid">
+      <div class="sol">
+        <h3>Work Circle</h3>
+        <p>A tailor-made mobile intranet that moves daily office operations from paper to paperless.</p>
+      </div>
+      <div class="sol">
+        <h3>eLeave</h3>
+        <p>Staff file leave from the mobile app; managers approve or reject straight from their phone.</p>
+      </div>
+      <div class="sol">
+        <h3>eClaim</h3>
+        <p>Removes the messy paperwork of a traditional manual claims and reimbursement process.</p>
+      </div>
+      <div class="sol">
+        <h3>Inspire X70</h3>
+        <p>An HR system built on current technology, giving your HR team a simpler, faster workflow.</p>
+      </div>
+      <div class="sol">
+        <h3>Web Client</h3>
+        <p>Accessible from any computer — all a user needs is an ID, password, and a supported browser.</p>
+      </div>
+      <div class="sol">
+        <h3>Warehouse Barcode Management</h3>
+        <p>A stock-counting application that lets your warehouse team complete counts quickly and accurately.</p>
+      </div>
+    </div>
+
+    <p class="sol-note">Also available: <strong>SAP Business One</strong>, <strong>BEAS</strong> manufacturing, <strong>Sales Force Automation</strong>, and <strong>Field Service</strong>. Book a slot below and we'll map which of these your operation actually needs.</p>
+  </div>
+</section>
+
+<!-- ── 4. BOOKING ── -->
 <section class="booking-section" id="booking">
   <div class="wrap">
     <div class="booking">
@@ -95,12 +244,12 @@
         </ul>
       </div>
       <div class="booking-frame">
-        <iframe src="https://api.leadconnectorhq.com/widget/booking/q4TTPSxwPHq1qawNaG0m" allow="payment" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="q4TTPSxwPHq1qawNaG0m_1785989369356"></iframe>
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/q4TTPSxwPHq1qawNaG0m" allow="payment" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="q4TTPSxwPHq1qawNaG0m_1785989369356" title="Book a consultation with MRTC App Lab"></iframe>
       </div>
     </div>
   </div>
 </section>
 
 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
-
 </body>
+</html>
